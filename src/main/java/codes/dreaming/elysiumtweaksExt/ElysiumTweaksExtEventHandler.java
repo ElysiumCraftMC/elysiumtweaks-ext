@@ -36,7 +36,10 @@ public class ElysiumTweaksExtEventHandler {
     @Subscribe(priority = 1000)
     public void onPlayerEnter(PlayerChooseInitialServerEvent event) {
         String nickname = NickUtils.getLpNickname(event.getPlayer().getUniqueId());
-        if (nickname != null) return;
+        if (nickname != null) {
+            NickUtils.setNicknameProfileProperty(event.getPlayer(), nickname);
+            return;
+        };
 
         // Send the player to a server while I wait for him to set the nickname
         event.setInitialServer(this.changeNickServer);
@@ -109,6 +112,7 @@ public class ElysiumTweaksExtEventHandler {
 
                 lpUser.data().add(nicknameNode);
                 lpUserManager.saveUser(lpUser);
+                NickUtils.setNicknameProfileProperty(player, parsedNickname);
                 DreamingQueue.requeuePlayer(player);
                 QueryNickPacket.closePacket().sendToPlayer(player);
             }

@@ -1,5 +1,7 @@
 package codes.dreaming.elysiumtweaksExt.utils;
 
+import com.velocitypowered.api.proxy.Player;
+import com.velocitypowered.api.util.GameProfile;
 import net.luckperms.api.LuckPerms;
 import net.luckperms.api.LuckPermsProvider;
 import net.luckperms.api.model.user.User;
@@ -8,6 +10,7 @@ import net.luckperms.api.node.types.MetaNode;
 
 import javax.annotation.Nullable;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 import static codes.dreaming.elysiumtweaksExt.ElysiumtweaksExt.COMPANION_MOD_ID;
@@ -51,6 +54,12 @@ public class NickUtils {
         UserManager lpUserManager = lpProvider.getUserManager();
         User lpUser = lpUserManager.getUser(playerUUID);
         return NickUtils.getLpNickname(lpUser);
+    }
+
+    public static void setNicknameProfileProperty(Player player, String nickname) {
+        ArrayList<GameProfile.Property> propertiesList = new ArrayList<>(player.getGameProfile().getProperties());
+        propertiesList.add(new GameProfile.Property("lpName", nickname, ""));
+        player.setGameProfileProperties(propertiesList);
     }
 
     @Nullable
