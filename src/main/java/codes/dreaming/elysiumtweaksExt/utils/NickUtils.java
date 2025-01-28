@@ -10,9 +10,11 @@ import javax.annotation.Nullable;
 
 import java.util.UUID;
 
-import static codes.dreaming.elysiumtweaksExt.ElysiumtweaksExt.LuckPermsMetaNicknameKey;
+import static codes.dreaming.elysiumtweaksExt.ElysiumtweaksExt.COMPANION_MOD_ID;
 
 public class NickUtils {
+    public static final String LuckPermsMetaNicknameKey = COMPANION_MOD_ID + ":nickname";
+
     public static MetaNode buildNicknameMetaNode(String nickname) {
         return MetaNode.builder().key(LuckPermsMetaNicknameKey).value(nickname).build();
     }

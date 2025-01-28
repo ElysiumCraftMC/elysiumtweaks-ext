@@ -28,7 +28,6 @@ import java.util.logging.Logger;
 public class ElysiumtweaksExt {
     public static final String PLUGIN_ID = "elysiumtweaks-ext";
     public static final String COMPANION_MOD_ID = "elysium";
-    public static final String LuckPermsMetaNicknameKey = COMPANION_MOD_ID + ":nickname";
 
     private final ConfigHelper configHelper;
     private final ProxyServer proxyServer;
