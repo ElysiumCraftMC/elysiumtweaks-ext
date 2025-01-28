@@ -16,11 +16,11 @@ enum QueryNickPacketState {
 public class QueryNickPacket extends FriendlyByteBuf {
     public static ChannelIdentifier IDENTIFIER = MinecraftChannelIdentifier.create(COMPANION_MOD_ID, "query_nick");
 
-    QueryNickPacket(QueryNickPacketState state, boolean status) {
+    QueryNickPacket(QueryNickPacketState state, boolean result) {
         super(Unpooled.buffer());
 
         this.writeUtf(state.name());
-        this.writeBoolean(status);
+        this.writeBoolean(result);
     }
 
     public static QueryNickPacket closePacket() {
