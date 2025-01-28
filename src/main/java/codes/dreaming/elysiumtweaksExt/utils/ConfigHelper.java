@@ -56,6 +56,7 @@ public class ConfigHelper {
     }
 
     public List<String> getBlacklistedNicks() throws SerializationException {
-        return configData.node("blacklistedNames").getList(String.class);
+        return configData.node("blacklistedNames").getList(String.class, List.of());
     }
+
 }
