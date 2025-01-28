@@ -75,7 +75,10 @@ public class ElysiumTweaksExtEventHandler {
                 String userInput = in.readUtf();
                 String parsedNickname = NickUtils.parseNickname(userInput);
 
-                if (parsedNickname == null || configHelper.getBlacklistedNicks().contains(parsedNickname)) {
+                if (parsedNickname == null
+                        || configHelper.getBlacklistedNicks().contains(parsedNickname)
+                        || configHelper.getBlacklistedNickParts().parallelStream().anyMatch(parsedNickname::contains)
+                ) {
                     QueryNickPacket.invalidPacket().sendToPlayer(player);
                     return;
                 }
