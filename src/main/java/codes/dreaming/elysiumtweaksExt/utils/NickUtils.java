@@ -21,7 +21,7 @@ public class NickUtils {
 
     @Nullable
     public static String parseNickname(String userInput) {
-        String[] nickParts = userInput.trim().replaceAll(" +", " ").split(" ");
+        String[] nickParts = userInput.trim().split(" +");
         if (nickParts.length == 0) {
             return null;
         }
