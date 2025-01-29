@@ -56,10 +56,17 @@ public class NickUtils {
         return NickUtils.getLpNickname(lpUser);
     }
 
-    public static void setNicknameProfileProperty(Player player, String nickname) {
+    public static void setNicknameProfileProperty(Player player, String nickname, boolean firstLogin) {
         ArrayList<GameProfile.Property> propertiesList = new ArrayList<>(player.getGameProfile().getProperties());
         propertiesList.add(new GameProfile.Property("lpName", nickname, ""));
+        if (firstLogin) {
+            propertiesList.add(new GameProfile.Property("firstLogin", "true", ""));
+        }
         player.setGameProfileProperties(propertiesList);
+    }
+
+    public static void setNicknameProfileProperty(Player player, String nickname) {
+        NickUtils.setNicknameProfileProperty(player, nickname, false);
     }
 
     @Nullable

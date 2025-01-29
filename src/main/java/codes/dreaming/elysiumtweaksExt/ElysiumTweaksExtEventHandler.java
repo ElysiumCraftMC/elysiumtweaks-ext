@@ -112,7 +112,7 @@ public class ElysiumTweaksExtEventHandler {
 
                 lpUser.data().add(nicknameNode);
                 lpUserManager.saveUser(lpUser);
-                NickUtils.setNicknameProfileProperty(player, parsedNickname);
+                NickUtils.setNicknameProfileProperty(player, parsedNickname, true);
                 DreamingQueue.requeuePlayer(player);
                 QueryNickPacket.closePacket().sendToPlayer(player);
             }
